@@ -1,0 +1,48 @@
+ProductController
+    Get Products.
+    Add a Product.
+    Get one Product.
+    Filter Product.
+    Rate Product.
+    Add Items.
+    Get Items.
+    Remove Items from cart.
+
+UsrController
+    Signup-Name,Email,Password,TypeOfUser(customer,seller)
+    Signin-Email,Password
+{
+_id:Cat1,
+average:50000
+}
+
+2. Find the average rating of a product
+
+db.products.aggregate([
+    //1. Create documents for ratings
+    {
+        $unwind:"$ratings"
+    },
+    //2. Group rating per product and get average
+    {
+        $group:{
+            _id:"$name",
+            averageRating:{$avg:"$ratings.rating"}
+        }
+    }
+])
+
+
+Folder Structure
+Route configuration
+Creating APIs
+Different API Methods
+Middlewares
+Route parameters
+Query parameters
+Testing API using Postman
+Securing API using jwt token Documenting API using swagger
+CORS
+Logging
+Error handling
+    
